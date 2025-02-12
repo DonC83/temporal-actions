@@ -20,7 +20,8 @@ jobs:
    - name: Install Temporal CLI
      uses: temporalio/setup-temporal@v0
    - name: Run workflow
-     run: temporal workflow start --task-queue TESTING_QUEUE \
+     run: |
+      temporal workflow start --task-queue TESTING_QUEUE \
       --type UpdateCustomerProfile --input '{"capCisID":"1232432", "migrationDate":"2025-02-28"}' \
       --workflow-id $(uuidgen | tr "[:upper:]" "[:lower:]") \
       --namespace customer-migration-tms-sitl.wpg6u \
