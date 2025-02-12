@@ -14,6 +14,17 @@ on:
     description: 'The end date in yyyy-MM-dd'
     required: true
     type: string
+   namespace:
+    description: 'The temporal namespace to execute against'
+    required: true
+    type: choice
+    options:
+     - customer-migration-tms-dev.wpg6u
+     - customer-migration-tms-pnv.wpg6u
+     - customer-migration-tms-sitk.wpg6u
+     - customer-migration-tms-sitl.wpg6u
+     - customer-migration-tms-sitq.wpg6u
+     - customer-migration-tms-prod.wpg6u
 
 jobs:
  run-workflow:
