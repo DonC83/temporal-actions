@@ -37,4 +37,4 @@ jobs:
       temporal workflow start --task-queue TESTING_QUEUE \
       --type UpdateCustomerProfile --input '{"capCisID":"1232432", "migrationDate":"${{ inputs.start_date }}"}' \
       --workflow-id $(uuidgen | tr "[:upper:]" "[:lower:]") \
-      --namespace customer-migration-tms-sitl.wpg6u \
+      --namespace ${{ inputs.namespace }} \
