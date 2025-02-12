@@ -7,9 +7,11 @@ on:
  workflow_dispatch:
   inputs:
    start_date:
+    description: The start date in ddMMYYYY
     required: true
     type: string
    end_date:
+    description: The end date in ddMMYYYY
     required: true
     type: string
 
