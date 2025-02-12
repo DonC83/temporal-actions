@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Temporal Test
+
+# Controls when the workflow will run
+on:
+ workflow_dispatch:
+  inputs:
+   start_date:
+    required: true
+    type: string
+   end_date:
+    required: true
+    type: string
+
+jobs:
+ run-workflow:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Install Temporal CLI
+     uses: temporalio/setup-temporal@v0
+   - name: Run workflow
+     run: temporal --task-queue TESTING_QUEUE \
+      --type UpdateCustomerProfile --input '{"capCisID":"1232432", "migrationDate":"2025-02-28"}' \
+      --workflow-id $(uuidgen | tr "[:upper:]" "[:lower:]") \
+      --tls-ca-path "/Users/$(whoami)/.ssh/anz_global_root_ca_v2.pem" \
+      --tls-disable-host-verification \
+      --address passthrough:///proxy.temporal.gcpnp.anz:443 \
+      --namespace customer-migration-tms-sitl.wpg6u \
+      --grpc-meta "Authorization=Bearer $(gcloud auth print-identity-token)"
