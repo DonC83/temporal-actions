@@ -23,8 +23,4 @@ jobs:
      run: temporal --task-queue TESTING_QUEUE \
       --type UpdateCustomerProfile --input '{"capCisID":"1232432", "migrationDate":"2025-02-28"}' \
       --workflow-id $(uuidgen | tr "[:upper:]" "[:lower:]") \
-      --tls-ca-path "/Users/$(whoami)/.ssh/anz_global_root_ca_v2.pem" \
-      --tls-disable-host-verification \
-      --address passthrough:///proxy.temporal.gcpnp.anz:443 \
       --namespace customer-migration-tms-sitl.wpg6u \
-      --grpc-meta "Authorization=Bearer $(gcloud auth print-identity-token)"
