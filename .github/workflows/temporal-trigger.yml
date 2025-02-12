@@ -7,11 +7,11 @@ on:
  workflow_dispatch:
   inputs:
    start_date:
-    description: The start date in ddMMYYYY
+    description: 'The start date in yyyy-MM-dd'
     required: true
     type: string
    end_date:
-    description: The end date in ddMMYYYY
+    description: 'The end date in yyyy-MM-dd'
     required: true
     type: string
 
@@ -24,6 +24,6 @@ jobs:
    - name: Run workflow
      run: |
       temporal workflow start --task-queue TESTING_QUEUE \
-      --type UpdateCustomerProfile --input '{"capCisID":"1232432", "migrationDate":"2025-02-28"}' \
+      --type UpdateCustomerProfile --input '{"capCisID":"1232432", "migrationDate":"${{ inputs.start_date }}"}' \
       --workflow-id $(uuidgen | tr "[:upper:]" "[:lower:]") \
       --namespace customer-migration-tms-sitl.wpg6u \
