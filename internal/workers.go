@@ -72,7 +72,10 @@ func (c *ComplainingWorkerImpl) Start() {
 	}
 	defer cl.Close()
 
-	w := worker.New(cl, ComplainingTaskQueue, worker.Options{})
+	w := worker.New(cl, ComplainingTaskQueue, worker.Options{
+		WorkerActivitiesPerSecond:    1,
+		TaskQueueActivitiesPerSecond: 1,
+	})
 	w.RegisterActivity(ComplainingFunction)
 
 	err = w.Run(worker.InterruptCh())

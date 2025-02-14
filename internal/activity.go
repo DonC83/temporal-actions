@@ -16,5 +16,5 @@ func AnotherFunction(ctx context.Context) error {
 }
 
 func ComplainingFunction(ctx context.Context, value string) (string, error) {
-	return fmt.Sprintf("I'm really slow doinbg %s", value), nil
+	return fmt.Sprintf("I'm really slow doing %s", value), nil
 }
