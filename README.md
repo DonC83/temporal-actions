@@ -57,6 +57,6 @@ theoretically refactoring to achieve usage or multiple task queues does not seem
 - Configure the worker options `WorkerActivitiesPerSecond` and/or `TaskQueueActivitiesPerSecond` as required
 - TEST!
 
-The image below show the workflow execution of the sample code. You can see the workflow
+The image below shows the workflow execution of the sample code. You can see the workflow
 using one task queue `workflow-task-queue` and the complaining activity using another separate one `complaining-task-queue`
 ![example](./doc/image1.png)
