@@ -53,7 +53,9 @@ theoretically refactoring to achieve usage or multiple task queues does not seem
 
 - Consider what activities needs to be separated and remove them from the current worker registration
 - Create a new worker for each task queue you expect to use to poll/execute activities that need to be constrained
-- Register the activities against the new workers accordingly 
+- Register the activities against the new workers accordingly
+- Configure the worker options `WorkerActivitiesPerSecond` and/or `TaskQueueActivitiesPerSecond` as required
+- TEST!
 
 The image below show the workflow execution of the sample code. You can see the workflow
 using one task queue `workflow-task-queue` and the complaining activity using another separate one `complaining-task-queue`
