@@ -55,6 +55,15 @@ theoretically refactoring to achieve usage or multiple task queues does not seem
 - Create a new worker for each task queue you expect to use to poll/execute activities that need to be constrained
 - Register the activities against the new workers accordingly
 - Configure the worker options `WorkerActivitiesPerSecond` and/or `TaskQueueActivitiesPerSecond` as required
+- Refactor the activity execution to use the new task queue 
+```
+newOptions := workflow.ActivityOptions{
+	TaskQueue:           NewTaskQueue,
+	StartToCloseTimeout: time.Second * 5,
+}
+newCtx := workflow.WithActivityOptions(ctx, newOptions)
+err := workflow.ExecuteActivity(newCtx, ThrottledActivity, name).Get(ctx, &result)
+```
 - TEST!
 
 The image below shows the workflow execution of the sample code. You can see the workflow
